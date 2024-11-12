@@ -1,0 +1,15 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{Introducción}{2}{section*.2}%
+\contentsline {section}{Criterios}{2}{section*.3}%
+\contentsline {subsection}{Peso Total del Vehículo}{2}{section*.4}%
+\contentsline {subsection}{Coste de Fabricación}{2}{section*.5}%
+\contentsline {subsection}{Fiabilidad y Seguridad}{3}{section*.6}%
+\contentsline {subsection}{Innovación}{3}{section*.7}%
+\contentsline {subsection}{Evaluación de riesgos}{3}{section*.8}%
+\contentsline {subsection}{Sostenibilidad}{3}{section*.9}%
+\contentsline {section}{Mejoras}{4}{section*.10}%
+\contentsline {subsection}{Monocasco}{4}{section*.11}%
+\contentsline {subsection}{Tracción a las 4 ruedas}{5}{section*.12}%
+\contentsline {subsection}{Optimización de la batería}{5}{section*.13}%
+\contentsline {subsection}{Telemetría}{5}{section*.14}%
+\contentsline {subsection}{Diseño de Nuevas Aletas y Difusores para Aerodinámica}{5}{section*.15}%

@@ -1,0 +1,143 @@
+---
+title: 'Decisión multicriterio: Elección de la mejora más óptima para su implementación
+  en un equipo de Formula Student'
+author: "Laura Mayorgas del Castillo"
+lang: es
+output:
+  pdf_document:
+    toc: true
+  html_document:
+    toc: true
+    toc_depth: 5
+editor_options:
+  markdown:
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\newpage
+
+# Introducción
+
+La Formula Student es la competición más prestigiosa a nivel ingenieril
+del mundo. Es por eso que los distintos equipos buscan continuamente
+mejoras que optimicen el rendimiento de sus monoplazas. Sin embargo,
+debido a los recursos limitados y múltiples amplio abanico de mejoras,
+elegir la más adecuada es un desafío. Este trabajo propone un enfoque de
+decisiones multicriterio para identificar la mejora óptima, evaluando
+factores como el rendimiento, el costo y el peso.
+
+![ART-24 D](Fotos/fotomonoplazas.png){width="400"} 
+
+ARUS es el equipo de Formula Student de la Universidad de Sevilla y del
+cual vamos a realizar el trabajo.
+
+[*(ARUS web)*](https://www.arusteam.com/)
+
+# Criterios
+
+Para la elección de la mejora más óptima tenemos que tener en cuanta
+distintos criterios, en este caso los hemos resumidos en los siguientes
+6.
+
+## Peso Total del Vehículo
+
+Este criterio afecta directamente en la aceleración y frenado del
+monoplazas, además también tiene un impacto directo en el comportamiento
+de este en las curvas. Es un criterio ***desfavorable*** en el sentido
+de que queremos mínimizar el peso.
+
+## Coste de Fabricación
+
+Al tratarse de un equipo de universidad disponemos de un límite
+presupuestario, por lo que siempre buscamos una opción económica y
+asequible. También es un criterio en el que buscaremos el ***mínimo***.
+
+## Fiabilidad y Seguridad
+
+Valorar la robustez de la mejora propuesta y su impacto en la seguridad
+del piloto, asegurando que el cambio no comprometa la durabilidad del
+vehículo ni los estándares de seguridad, todo debe cumplir las reglas
+que la competición de Alemania (FSG) determina. [*(enlace a la
+normativa)*](https://www.formulastudent.de/fileadmin/user_upload/all/2025/rules/FS-Rules_2025_v1.0.pdf)*.*
+
+
+## Innovación
+
+Este criterio considera el grado de creatividad y originalidad de la
+mejora, su potencial para introducir tecnologías o conceptos innovadores
+y la posibilidad de marcar la diferencia en la competición con un diseño
+único y eficiente. Existe un premio específico para el equipo más
+innovador de la temporada.
+
+## Evaluación de riesgos
+
+Análisis de los riesgos técnicos y operativos asociados a la
+implementación de las distintas mejoras. Se consideran posibles fallos o
+problemas que puedan surgir, así como el impacto que podrían tener en el
+rendimiento o la seguridad del vehículo. Se requiere establecer un plan
+de gestión de riesgos para mitigar los efectos adversos y reducir la
+probabilidad de problemas en competencia.
+
+## Sostenibilidad
+
+La sostenibilidad es cada vez más importante en el mundo actual esto se
+ve reflejado en la competición de Formula Student. Este criterio evalúa
+el impacto ambiental de los materiales, procesos y recursos utilizados
+para implementar las mejoras en estudio. Se priorizarán materiales
+reciclables y técnicas de fabricación ecoeficientes, buscando reducir la
+huella de carbono.
+
+\newpage
+# Mejoras
+
+Serán las alternativas que evaluaremos en cada uno de los criterios que
+hemos mencionado anteriormente. Veamos estas de forma detallada.
+
+## Monocasco
+
+Durante la temporada 24 y anteriormente en el equipo siempre se ha
+realizado un meneplazas cuyo chasis era tubular.
+
+![ART-24 D Chasis Tubular](Fotos/chasistubular.png){width="400"}
+
+Consiste en una red de tubos de acero o aluminio soldados entre sí. 
+
+Se está planteando la opción de cambiar el diseño de este chasis a un
+monocasco, siguiendo la tendencia adoptada por varios equipos de Formula
+Student. Al adoptar un chasis monocasco, no solo reducimos
+significativamente el peso del vehículo, sino que también incrementamos
+la rigidez estructural, lo cual mejora el comportamiento dinámico del
+mismo.
+
+![ART-25 D Monocasco](Fotos/monocasco.png){width="400"}
+\newpage
+
+## Tracción a las 4 ruedas
+Conocido y llamado a partir de ahora como 4WD(4 Wheel Drive). Consiste en lugar de tener un único motor,
+colocar uno en cada rueda. Este cambio mejorará la aceleración, el control y la estabilidad en curvas al distribuir la potencia en las
+cuatro ruedas, optimizando el agarre en cualquier condición de
+pista.
+
+![Estructura de un 4WD](Fotos/4WD.png){width="400"}
+
+## Optimización de la batería
+
+Cambio de celdas, antes eran cilíndricas y se pretende pasar a las que se pueden ver en la derecha, estas ocupan mucho menos sitio haciendo que el computo general de la batería tenga un peso menor al de la temporada de 2024. Además de un cambio en la configuración de la misma.
+
+![Celdas batería](Fotos/bateria.png){width="400"}
+
+## Telemetría
+
+Sistema de monitorización en tiempo real que recolecta y transmite los datos de los distintos componentes del vehículo hacia una estación remota, permitiendo detectar posibles problemas en directo. Además de la necesidad de conectar un sensor proporcionado por la misma competición llamado *dattalogger* que recoge todo estos datos. 
+
+
+## Diseño de Nuevas Aletas y Difusores para Aerodinámica
+Busca optimizar el flujo de aire alrededor del vehículo para mejorar el agarre y la estabilidad. Este sistema se centra en controlar la distribución de fuerzas aerodinámicas, aumentando la eficiencia y el rendimiento.
+
+\newpage
+
+
