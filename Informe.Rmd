@@ -4,11 +4,11 @@ title: 'Decisión multicriterio: Elección de la mejora más óptima para su imp
 author: "Laura Mayorgas del Castillo"
 lang: es
 output:
-  pdf_document:
-    toc: true
   html_document:
     toc: true
     toc_depth: 5
+  pdf_document:
+    toc: true
 editor_options:
   markdown:
     wrap: 72
@@ -16,6 +16,21 @@ editor_options:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r,echo=FALSE,message=FALSE,warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+```
+
+```{r,echo=FALSE,message=FALSE}
+source("Funciones/teoriadecision_funciones_multicriterio.R")
+source("Funciones/teoriadecision_funciones_multicriterio_diagram.R")
+source("Funciones/teoriadecision_funciones_multicriterio_utiles.R")
 ```
 
 \newpage
@@ -43,20 +58,21 @@ Para la elección de la mejora más óptima tenemos que tener en cuanta
 distintos criterios, en este caso los hemos resumidos en los siguientes
 6.
 
-## Peso Total del Vehículo
+**1. Peso Total del Vehículo**
 
 Este criterio afecta directamente en la aceleración y frenado del
 monoplazas, además también tiene un impacto directo en el comportamiento
 de este en las curvas. Es un criterio ***desfavorable*** en el sentido
 de que queremos mínimizar el peso.
 
-## Coste de Fabricación
+**2. Coste de Fabricación**
 
 Al tratarse de un equipo de universidad disponemos de un límite
 presupuestario, por lo que siempre buscamos una opción económica y
 asequible. También es un criterio en el que buscaremos el ***mínimo***.
 
-## Fiabilidad y Seguridad
+
+**3. Fiabilidad y Seguridad**
 
 Valorar la robustez de la mejora propuesta y su impacto en la seguridad
 del piloto, asegurando que el cambio no comprometa la durabilidad del
@@ -65,7 +81,7 @@ que la competición de Alemania (FSG) determina. [*(enlace a la
 normativa)*](https://www.formulastudent.de/fileadmin/user_upload/all/2025/rules/FS-Rules_2025_v1.0.pdf)*.*
 
 
-## Innovación
+**4. Innovación**
 
 Este criterio considera el grado de creatividad y originalidad de la
 mejora, su potencial para introducir tecnologías o conceptos innovadores
@@ -73,7 +89,7 @@ y la posibilidad de marcar la diferencia en la competición con un diseño
 único y eficiente. Existe un premio específico para el equipo más
 innovador de la temporada.
 
-## Evaluación de riesgos
+**5. Evaluación de riesgos**
 
 Análisis de los riesgos técnicos y operativos asociados a la
 implementación de las distintas mejoras. Se consideran posibles fallos o
@@ -82,7 +98,7 @@ rendimiento o la seguridad del vehículo. Se requiere establecer un plan
 de gestión de riesgos para mitigar los efectos adversos y reducir la
 probabilidad de problemas en competencia.
 
-## Sostenibilidad
+**6. Sostenibilidad**
 
 La sostenibilidad es cada vez más importante en el mundo actual esto se
 ve reflejado en la competición de Formula Student. Este criterio evalúa
@@ -97,7 +113,7 @@ huella de carbono.
 Serán las alternativas que evaluaremos en cada uno de los criterios que
 hemos mencionado anteriormente. Veamos estas de forma detallada.
 
-## Monocasco
+**1. Monocasco**
 
 Durante la temporada 24 y anteriormente en el equipo siempre se ha
 realizado un meneplazas cuyo chasis era tubular.
@@ -116,7 +132,8 @@ mismo.
 ![ART-25 D Monocasco](Fotos/monocasco.png){width="400"}
 \newpage
 
-## Tracción a las 4 ruedas
+**2. Tracción a las 4 rueda**
+
 Conocido y llamado a partir de ahora como 4WD(4 Wheel Drive). Consiste en lugar de tener un único motor,
 colocar uno en cada rueda. Este cambio mejorará la aceleración, el control y la estabilidad en curvas al distribuir la potencia en las
 cuatro ruedas, optimizando el agarre en cualquier condición de
@@ -124,18 +141,18 @@ pista.
 
 ![Estructura de un 4WD](Fotos/4WD.png){width="400"}
 
-## Optimización de la batería
+**3. Optimización de la batería**
 
 Cambio de celdas, antes eran cilíndricas y se pretende pasar a las que se pueden ver en la derecha, estas ocupan mucho menos sitio haciendo que el computo general de la batería tenga un peso menor al de la temporada de 2024. Además de un cambio en la configuración de la misma.
 
 ![Celdas batería](Fotos/bateria.png){width="400"}
 
-## Telemetría
+**4. Telemetría**
 
 Sistema de monitorización en tiempo real que recolecta y transmite los datos de los distintos componentes del vehículo hacia una estación remota, permitiendo detectar posibles problemas en directo. Además de la necesidad de conectar un sensor proporcionado por la misma competición llamado *dattalogger* que recoge todo estos datos. 
 
 
-## Diseño de Nuevas Aletas y Difusores para Aerodinámica
+**5. Diseño de Nuevas Aletas y Difusores para Aerodinámica**
 Busca optimizar el flujo de aire alrededor del vehículo para mejorar el agarre y la estabilidad. Este sistema se centra en controlar la distribución de fuerzas aerodinámicas, aumentando la eficiencia y el rendimiento.
 
 \newpage

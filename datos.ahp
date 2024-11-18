@@ -1,0 +1,113 @@
+Version: 2.0
+
+Alternatives: &alternatives
+  Monocasco:
+  4WD:
+  Batería:
+  Telemetría:
+  Aerodinámica:
+
+Goal:
+  name: Elegir mejora óptima para el monoplazas
+  preferences:
+    pairwise:
+      - [Peso, Coste, 3]
+      - [Peso, Fiabilidad, 1/2]
+      - [Peso, Innovación, 1/5]
+      - [Peso, Riesgos, 1]
+      - [Peso, Sostenibilidad, 1/4]
+      - [Coste, Fiabilidad, 1/7]
+      - [Coste, Innovación, 1/8]
+      - [Coste, Riesgos, 1/3]
+      - [Coste, Sostenibilidad, 2]
+      - [Fiabilidad, Innovación, 1/6]
+      - [Fiabilidad, Riesgos, 2]
+      - [Fiabilidad, Sostenibilidad, 1/3]
+      - [Innovación, Riesgos, 1/4]
+      - [Innovación, Sostenibilidad, 1/3]
+      - [Riesgos, Sostenibilidad, 1]
+  children:
+    Peso:
+      preferences
+        pairwise:
+          - [Monocasco, 4WD, 1/3]
+          - [Monocasco,Batería, 2]
+          - [Monocasco, Telemetría, 5]
+          - [Monocasco, Aerodinámica, 1/2]
+          - [4WD,Batería, 1/5]
+          - [4WD, Telemetría, 1/7]
+          - [4WD, Aerodinámica, 1/4]
+          - [Batería, Telemetría, 3]
+          - [Batería, Aerodinámica, 2]
+          - [Telemetría, Aerodinámica, 1/6]
+      children: *alternatives
+    Coste:
+      preferences:
+        pairwise:
+          - [Monocasco, 4WD, 4]
+          - [Monocasco,Batería, 3]
+          - [Monocasco, Telemetría, 2]
+          - [Monocasco, Aerodinámica, 1/2]
+          - [4WD,Batería, 1]
+          - [4WD, Telemetría, 1/3]
+          - [4WD, Aerodinámica, 1/6]
+          - [Batería, Telemetría, 2]
+          - [Batería, Aerodinámica, 1/5]
+          - [Telemetría, Aerodinámica, 3]
+      children: *alternatives
+    Fiabilidad:
+      preferences:
+        pairwise:
+          - [Monocasco, 4WD, 1/2]
+          - [Monocasco,Batería, 3]
+          - [Monocasco, Telemetría, 4]
+          - [Monocasco, Aerodinámica, 1/7]
+          - [4WD,Batería, 5]
+          - [4WD, Telemetría, 6]
+          - [4WD, Aerodinámica, 1/3]
+          - [Batería, Telemetría, 2]
+          - [Batería, Aerodinámica, 1/4]
+          - [Telemetría, Aerodinámica, 1/2]
+      children: *alternatives
+    Innovación:
+      preferences:
+        pairwise:
+          - [Monocasco, 4WD, 3]
+          - [Monocasco,Batería, 1/4]
+          - [Monocasco, Telemetría, 6]
+          - [Monocasco, Aerodinámica, 5]
+          - [4WD,Batería, 1/5]
+          - [4WD, Telemetría, 1]
+          - [4WD, Aerodinámica, 7]
+          - [Batería, Telemetría, 3]
+          - [Batería, Aerodinámica, 1/3]
+          - [Telemetría, Aerodinámica, 4]
+      children: *alternatives
+    Riesgos:
+      preferences:
+        pairwise:
+          - [Monocasco, 4WD, 2]
+          - [Monocasco,Batería, 5]
+          - [Monocasco, Telemetría, 1/4]
+          - [Monocasco, Aerodinámica, 1]
+          - [4WD,Batería, 3]
+          - [4WD, Telemetría, 1/6]
+          - [4WD, Aerodinámica, 1/5]
+          - [Batería, Telemetría, 1/3]
+          - [Batería, Aerodinámica, 2]
+          - [Telemetría, Aerodinámica, 3]
+      children: *alternatives
+    Sostenibilidad:
+      preferences:
+        pairwise:
+          - [Monocasco, 4WD, 1/4]
+          - [Monocasco,Batería, 6]
+          - [Monocasco, Telemetría, 2]
+          - [Monocasco, Aerodinámica, 1/7]
+          - [4WD,Batería, 1/3]
+          - [4WD, Telemetría, 4]
+          - [4WD, Aerodinámica, 1/2]
+          - [Batería, Telemetría, 1/5]
+          - [Batería, Aerodinámica, 3]
+          - [Telemetría, Aerodinámica, 1/6]
+      children: *alternatives
