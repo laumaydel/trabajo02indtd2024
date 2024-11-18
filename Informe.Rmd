@@ -58,7 +58,7 @@ Para la elección de la mejora más óptima tenemos que tener en cuanta
 distintos criterios, en este caso los hemos resumidos en los siguientes
 6.
 
-**1. Peso Total del Vehículo**
+**1. Peso Total del Monoplazas**
 
 Este criterio afecta directamente en la aceleración y frenado del
 monoplazas, además también tiene un impacto directo en el comportamiento
@@ -157,4 +157,140 @@ Busca optimizar el flujo de aire alrededor del vehículo para mejorar el agarre 
 
 \newpage
 
+# AHP
+
+En primer lugar vamos a hacer una matriz que contenga la información al comparar los distintos ***criterios***: 
+```{r,echo=FALSE,warning=FALSE}
+criterios= c ("Peso","Coste","Fiabilidad","Innovación","Riesgo","Sostenibilidad")
+tablacriterios= multicriterio.crea.matrizvaloraciones(
+  c(1/2,3,8,5,7,4,9,6,7,4,2,4,1/3,1/2,2), numalternativas = 6, v.nombres.alternativas = criterios)
+tablacriterios %>%
+  kable(booktabs = TRUE,digits = 2) %>%
+  kable_styling(latex_options = c("striped", "condensed","HOLD_position", "scale_down"), 
+                position = "center",
+                full_width = FALSE)
+```
+
+Ahora se hará una matriz para cada uno de los criterios haciendo comparaciones dos a dos sobre las distintas alternativas yy ver cual es preferible a cual, buscando simepre una estructura coherente y respetando la relación de coherencia. 
+
+```{r,echo=FALSE}
+alternativas= c("Monocasco","4WD","Batería","Telemetría","Aerodinámica")
+```
+
+-   **Peso Total del Monoplazas**
+
+```{r,echo=FALSE,warning=FALSE}
+peso= multicriterio.crea.matrizvaloraciones(
+  c(4,8,9,2,5,7,2,2,1/4,1/6),numalternativas = 5,
+  v.nombres.alternativas = alternativas)
+peso %>%
+  kable(booktabs = TRUE,digits = 2) %>%
+  kable_styling(latex_options = c("striped", "condensed","HOLD_position", "scale_down"), 
+                position = "center",
+                full_width = FALSE)
+```
+
+-   **Coste de Fabricación**
+
+```{r,echo=FALSE,warning=FALSE}
+coste= multicriterio.crea.matrizvaloraciones(
+  c(1/2,1/9,1/7,1/5,1/6,1/3,1,3,6,2),numalternativas = 5,
+  v.nombres.alternativas = alternativas)
+coste %>%
+  kable(booktabs = TRUE,digits = 2) %>%
+  kable_styling(latex_options = c("striped", "condensed","HOLD_position", "scale_down"), 
+                position = "center",
+                full_width = FALSE)
+```
+-   **Fiabilidad y seguridad**
+
+```{r,echo=FALSE,warning=FALSE}
+fiabilidad= multicriterio.crea.matrizvaloraciones(
+  c(1/7,1/5,1/9,1/2,2,1/2,7,1/4,2,7),numalternativas = 5,
+  v.nombres.alternativas = alternativas)
+fiabilidad %>%
+  kable(booktabs = TRUE,digits = 2) %>%
+  kable_styling(latex_options = c("striped", "condensed","HOLD_position", "scale_down"), 
+                position = "center",
+                full_width = FALSE)
+```
+-   **Innovación**
+
+```{r,echo=FALSE,warning=FALSE}
+innovacion= multicriterio.crea.matrizvaloraciones(
+  c(5,5,2,9,1,1/3,5,1/3,5,7),numalternativas = 5,
+  v.nombres.alternativas = alternativas)
+innovacion %>%
+  kable(booktabs = TRUE,digits = 2) %>%
+  kable_styling(latex_options = c("striped", "condensed","HOLD_position", "scale_down"), 
+                position = "center",
+                full_width = FALSE)
+```
+
+-   **Evaluación de riesgo**
+
+```{r,echo=FALSE,warning=FALSE}
+riesgo= multicriterio.crea.matrizvaloraciones(
+  c(1/2,1/5,1/7,3,1/3,1/6,5,1/2,5,9),numalternativas = 5,
+  v.nombres.alternativas = alternativas)
+riesgo %>%
+  kable(booktabs = TRUE,digits = 2) %>%
+  kable_styling(latex_options = c("striped", "condensed","HOLD_position", "scale_down"), 
+                position = "center",
+                full_width = FALSE)
+```
+
+
+-   **Sostenibilidad**
+
+```{r,echo=FALSE,warning=FALSE}
+sostenibilidad= multicriterio.crea.matrizvaloraciones(
+  c(1/2,2,1/6,1/3,3,1/5,1/3,1/9,1/7,2),numalternativas = 5,
+  v.nombres.alternativas = alternativas)
+sostenibilidad %>%
+  kable(booktabs = TRUE,digits = 2) %>%
+  kable_styling(latex_options = c("striped", "condensed","HOLD_position", "scale_down"), 
+                position = "center",
+                full_width = FALSE)
+```
+
+
+## Mayor autovalor
+**Pesos locales**
+```{r}
+wcriterios <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(tablacriterios)
+wpeso <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(peso)
+wcoste <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(coste)
+wfiabilidad <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(fiabilidad)
+winnovacion <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(innovacion)
+wriesgo <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(riesgo)
+wsostenibilidad <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(sostenibilidad)
+
+```
+
+**Pesos globales**
+```{r}
+tabla1 <- multicriterio.metodoAHP.pesosglobales_entabla(wcriterios$valoraciones.ahp, 
+                                                       rbind(wpeso$valoraciones.ahp,
+                                                             wcoste$valoraciones.ahp,
+                                                             wfiabilidad$valoraciones.ahp,
+                                                             winnovacion$valoraciones.ahp,
+                                                             wriesgo$valoraciones.ahp,
+                                                             wsostenibilidad$valoraciones.ahp))
+```
+
+```{r,echo=FALSE}
+tabla1 %>%
+  kable(booktabs = TRUE) %>%
+  kable_styling(latex_options = c("striped", "condensed","HOLD_position", "scale_down"), 
+                position = "center",
+                full_width = FALSE)
+
+```
+
+## Media geométrica
+
+```{r}
+
+```
 
