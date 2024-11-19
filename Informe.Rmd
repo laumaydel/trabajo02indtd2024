@@ -435,7 +435,7 @@ información muy condensada.
 
 ```{r,echo=FALSE, warning=FALSE}
 library(ahp)
-datos = Load("datos.ahp")
+datos = Load("AHP/datos.ahp")
 Calculate(datos)
 ```
 
@@ -446,14 +446,14 @@ Visualize(datos)
 **Contribución total**
 
 ```{r,echo=FALSE}
-export_formattable(AnalyzeTable(datos), file = "tablaAHPp1.png")
+export_formattable(AnalyzeTable(datos), file = "AHP/tablaAHPp1.png")
 ```
 
 **Pesos locales**
 
 ```{r, echo=FALSE}
 tabla2 = AnalyzeTable(datos, variable = "priority")
-export_formattable(tabla2, file = "tablaAHP2.png")
+export_formattable(tabla2, file = "AHP/tablaAHP2.png")
 ```
 
 **Análisis de las Tablas AHP**
