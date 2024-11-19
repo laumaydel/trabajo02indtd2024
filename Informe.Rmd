@@ -45,7 +45,7 @@ elegir la más adecuada es un desafío. Este trabajo propone un enfoque de
 decisiones multicriterio para identificar la mejora óptima, evaluando
 factores como el rendimiento, el costo y el peso.
 
-![ART-24 D](Fotos/fotomonoplazas.png){width="400"} 
+![ART-24 D](Fotos/fotomonoplazas.png){width="400"}
 
 ARUS es el equipo de Formula Student de la Universidad de Sevilla y del
 cual vamos a realizar el trabajo.
@@ -71,7 +71,6 @@ Al tratarse de un equipo de universidad disponemos de un límite
 presupuestario, por lo que siempre buscamos una opción económica y
 asequible. También es un criterio en el que buscaremos el ***mínimo***.
 
-
 **3. Fiabilidad y Seguridad**
 
 Valorar la robustez de la mejora propuesta y su impacto en la seguridad
@@ -79,7 +78,6 @@ del piloto, asegurando que el cambio no comprometa la durabilidad del
 vehículo ni los estándares de seguridad, todo debe cumplir las reglas
 que la competición de Alemania (FSG) determina. [*(enlace a la
 normativa)*](https://www.formulastudent.de/fileadmin/user_upload/all/2025/rules/FS-Rules_2025_v1.0.pdf)*.*
-
 
 **4. Innovación**
 
@@ -108,6 +106,7 @@ reciclables y técnicas de fabricación ecoeficientes, buscando reducir la
 huella de carbono.
 
 \newpage
+
 # Mejoras
 
 Serán las alternativas que evaluaremos en cada uno de los criterios que
@@ -120,7 +119,7 @@ realizado un meneplazas cuyo chasis era tubular.
 
 ![ART-24 D Chasis Tubular](Fotos/chasistubular.png){width="400"}
 
-Consiste en una red de tubos de acero o aluminio soldados entre sí. 
+Consiste en una red de tubos de acero o aluminio soldados entre sí.
 
 Se está planteando la opción de cambiar el diseño de este chasis a un
 monocasco, siguiendo la tendencia adoptada por varios equipos de Formula
@@ -129,40 +128,50 @@ significativamente el peso del vehículo, sino que también incrementamos
 la rigidez estructural, lo cual mejora el comportamiento dinámico del
 mismo.
 
-![ART-25 D Monocasco](Fotos/monocasco.png){width="400"}
-\newpage
+![ART-25 D Monocasco](Fotos/monocasco.png){width="400"} \newpage
 
 **2. Tracción a las 4 rueda**
 
-Conocido y llamado a partir de ahora como 4WD(4 Wheel Drive). Consiste en lugar de tener un único motor,
-colocar uno en cada rueda. Este cambio mejorará la aceleración, el control y la estabilidad en curvas al distribuir la potencia en las
-cuatro ruedas, optimizando el agarre en cualquier condición de
-pista.
+Conocido y llamado a partir de ahora como 4WD(4 Wheel Drive). Consiste
+en lugar de tener un único motor, colocar uno en cada rueda. Este cambio
+mejorará la aceleración, el control y la estabilidad en curvas al
+distribuir la potencia en las cuatro ruedas, optimizando el agarre en
+cualquier condición de pista.
 
 ![Estructura de un 4WD](Fotos/4WD.png){width="400"}
 
 **3. Optimización de la batería**
 
-Cambio de celdas, antes eran cilíndricas y se pretende pasar a las que se pueden ver en la derecha, estas ocupan mucho menos sitio haciendo que el computo general de la batería tenga un peso menor al de la temporada de 2024. Además de un cambio en la configuración de la misma.
+Cambio de celdas, antes eran cilíndricas y se pretende pasar a las que
+se pueden ver en la derecha, estas ocupan mucho menos sitio haciendo que
+el computo general de la batería tenga un peso menor al de la temporada
+de 2024. Además de un cambio en la configuración de la misma.
 
 ![Celdas batería](Fotos/bateria.png){width="400"}
 
 **4. Telemetría**
 
-Sistema de monitorización en tiempo real que recolecta y transmite los datos de los distintos componentes del vehículo hacia una estación remota, permitiendo detectar posibles problemas en directo. Además de la necesidad de conectar un sensor proporcionado por la misma competición llamado *dattalogger* que recoge todo estos datos. 
+Sistema de monitorización en tiempo real que recolecta y transmite los
+datos de los distintos componentes del vehículo hacia una estación
+remota, permitiendo detectar posibles problemas en directo. Además de la
+necesidad de conectar un sensor proporcionado por la misma competición
+llamado *dattalogger* que recoge todo estos datos.
 
-
-**5. Diseño de Nuevas Aletas y Difusores para Aerodinámica**
-Busca optimizar el flujo de aire alrededor del vehículo para mejorar el agarre y la estabilidad. Este sistema se centra en controlar la distribución de fuerzas aerodinámicas, aumentando la eficiencia y el rendimiento.
+**5. Diseño de Nuevas Aletas y Difusores para Aerodinámica** Busca
+optimizar el flujo de aire alrededor del vehículo para mejorar el agarre
+y la estabilidad. Este sistema se centra en controlar la distribución de
+fuerzas aerodinámicas, aumentando la eficiencia y el rendimiento.
 
 \newpage
 
 # AHP
 
-En primer lugar vamos a hacer una matriz que contenga la información al comparar los distintos ***criterios***: 
+En primer lugar vamos a hacer una matriz que contenga la información al
+comparar los distintos ***criterios***:
+
 ```{r,echo=FALSE,warning=FALSE}
 criterios= c ("Peso","Coste","Fiabilidad","Innovación","Riesgo","Sostenibilidad")
-tablacriterios= multicriterio.crea.matrizvaloraciones(
+tablacriterios= multicriterio.crea.matrizvaloraciones_mej(
   c(1/2,3,8,5,7,4,9,6,7,4,2,4,1/3,1/2,2), numalternativas = 6, v.nombres.alternativas = criterios)
 tablacriterios %>%
   kable(booktabs = TRUE,digits = 2) %>%
@@ -171,7 +180,10 @@ tablacriterios %>%
                 full_width = FALSE)
 ```
 
-Ahora se hará una matriz para cada uno de los criterios haciendo comparaciones dos a dos sobre las distintas alternativas yy ver cual es preferible a cual, buscando simepre una estructura coherente y respetando la relación de coherencia. 
+Ahora se hará una matriz para cada uno de los criterios haciendo
+comparaciones dos a dos sobre las distintas alternativas yy ver cual es
+preferible a cual, buscando simepre una estructura coherente y
+respetando la relación de coherencia.
 
 ```{r,echo=FALSE}
 alternativas= c("Monocasco","4WD","Batería","Telemetría","Aerodinámica")
@@ -180,7 +192,7 @@ alternativas= c("Monocasco","4WD","Batería","Telemetría","Aerodinámica")
 -   **Peso Total del Monoplazas**
 
 ```{r,echo=FALSE,warning=FALSE}
-peso= multicriterio.crea.matrizvaloraciones(
+peso= multicriterio.crea.matrizvaloraciones_mej(
   c(4,8,9,2,5,7,2,2,1/4,1/6),numalternativas = 5,
   v.nombres.alternativas = alternativas)
 peso %>%
@@ -193,7 +205,7 @@ peso %>%
 -   **Coste de Fabricación**
 
 ```{r,echo=FALSE,warning=FALSE}
-coste= multicriterio.crea.matrizvaloraciones(
+coste= multicriterio.crea.matrizvaloraciones_mej(
   c(1/2,1/9,1/7,1/5,1/6,1/3,1,3,6,2),numalternativas = 5,
   v.nombres.alternativas = alternativas)
 coste %>%
@@ -202,10 +214,11 @@ coste %>%
                 position = "center",
                 full_width = FALSE)
 ```
+
 -   **Fiabilidad y seguridad**
 
 ```{r,echo=FALSE,warning=FALSE}
-fiabilidad= multicriterio.crea.matrizvaloraciones(
+fiabilidad= multicriterio.crea.matrizvaloraciones_mej(
   c(1/7,1/5,1/9,1/2,2,1/2,7,1/4,2,7),numalternativas = 5,
   v.nombres.alternativas = alternativas)
 fiabilidad %>%
@@ -214,10 +227,11 @@ fiabilidad %>%
                 position = "center",
                 full_width = FALSE)
 ```
+
 -   **Innovación**
 
 ```{r,echo=FALSE,warning=FALSE}
-innovacion= multicriterio.crea.matrizvaloraciones(
+innovacion= multicriterio.crea.matrizvaloraciones_mej(
   c(5,5,2,9,1,1/3,5,1/3,5,7),numalternativas = 5,
   v.nombres.alternativas = alternativas)
 innovacion %>%
@@ -230,7 +244,7 @@ innovacion %>%
 -   **Evaluación de riesgo**
 
 ```{r,echo=FALSE,warning=FALSE}
-riesgo= multicriterio.crea.matrizvaloraciones(
+riesgo= multicriterio.crea.matrizvaloraciones_mej(
   c(1/2,1/5,1/7,3,1/3,1/6,5,1/2,5,9),numalternativas = 5,
   v.nombres.alternativas = alternativas)
 riesgo %>%
@@ -240,11 +254,10 @@ riesgo %>%
                 full_width = FALSE)
 ```
 
-
 -   **Sostenibilidad**
 
 ```{r,echo=FALSE,warning=FALSE}
-sostenibilidad= multicriterio.crea.matrizvaloraciones(
+sostenibilidad= multicriterio.crea.matrizvaloraciones_mej(
   c(1/2,2,1/6,1/3,3,1/5,1/3,1/9,1/7,2),numalternativas = 5,
   v.nombres.alternativas = alternativas)
 sostenibilidad %>%
@@ -254,23 +267,27 @@ sostenibilidad %>%
                 full_width = FALSE)
 ```
 
+## Funciones de clase
 
-## Mayor autovalor
+### Mayor autovalor
+
 **Pesos locales**
+
 ```{r}
-wcriterios <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(tablacriterios)
-wpeso <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(peso)
-wcoste <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(coste)
-wfiabilidad <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(fiabilidad)
-winnovacion <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(innovacion)
-wriesgo <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(riesgo)
-wsostenibilidad <- multicriterio.metodoAHP.variante1.autovectormayorautovalor(sostenibilidad)
+wcriterios = multicriterio.metodoAHP.variante1.autovectormayorautovalor(tablacriterios)
+wpeso = multicriterio.metodoAHP.variante1.autovectormayorautovalor(peso)
+wcoste = multicriterio.metodoAHP.variante1.autovectormayorautovalor(coste)
+wfiabilidad = multicriterio.metodoAHP.variante1.autovectormayorautovalor(fiabilidad)
+winnovacion = multicriterio.metodoAHP.variante1.autovectormayorautovalor(innovacion)
+wriesgo = multicriterio.metodoAHP.variante1.autovectormayorautovalor(riesgo)
+wsostenibilidad = multicriterio.metodoAHP.variante1.autovectormayorautovalor(sostenibilidad)
 
 ```
 
 **Pesos globales**
+
 ```{r}
-tabla1 <- multicriterio.metodoAHP.pesosglobales_entabla(wcriterios$valoraciones.ahp, 
+tabla1 = multicriterio.metodoAHP.pesosglobales_entabla(wcriterios$valoraciones.ahp, 
                                                        rbind(wpeso$valoraciones.ahp,
                                                              wcoste$valoraciones.ahp,
                                                              wfiabilidad$valoraciones.ahp,
@@ -288,9 +305,226 @@ tabla1 %>%
 
 ```
 
-## Media geométrica
+### Media geométrica
+
+**Pesos locales**
 
 ```{r}
+wcriterios = multicriterio.metodoAHP.variante2.mediageometrica(tablacriterios)
+wpeso = multicriterio.metodoAHP.variante2.mediageometrica(peso)
+wcoste = multicriterio.metodoAHP.variante2.mediageometrica(coste)
+wfiabilidad = multicriterio.metodoAHP.variante2.mediageometrica(fiabilidad)
+winnovacion = multicriterio.metodoAHP.variante2.mediageometrica(innovacion)
+wriesgo = multicriterio.metodoAHP.variante2.mediageometrica(riesgo)
+wsostenibilidad = multicriterio.metodoAHP.variante2.mediageometrica(sostenibilidad)
+```
+
+**Pesos globales**
+
+```{r}
+tabla2 = multicriterio.metodoAHP.pesosglobales_entabla(wcriterios$valoraciones.ahp, 
+                                                       rbind(wpeso$valoraciones.ahp,
+                                                             wcoste$valoraciones.ahp,
+                                                             wfiabilidad$valoraciones.ahp,
+                                                             winnovacion$valoraciones.ahp,
+                                                             wriesgo$valoraciones.ahp,
+                                                             wsostenibilidad$valoraciones.ahp))
+```
+
+```{r,echo=FALSE}
+tabla2 %>%
+  kable(booktabs = TRUE) %>%
+  kable_styling(latex_options = c("striped", "condensed","HOLD_position", "scale_down"), 
+                position = "center",
+                full_width = FALSE)
 
 ```
 
+### Método básico
+
+**Pesos locales**
+
+```{r}
+wcriterios = multicriterio.metodoAHP.variante3.basico(tablacriterios)
+wpeso = multicriterio.metodoAHP.variante3.basico(peso)
+wcoste = multicriterio.metodoAHP.variante3.basico(coste)
+wfiabilidad = multicriterio.metodoAHP.variante3.basico(fiabilidad)
+winnovacion = multicriterio.metodoAHP.variante3.basico(innovacion)
+wriesgo = multicriterio.metodoAHP.variante3.basico(riesgo)
+wsostenibilidad = multicriterio.metodoAHP.variante3.basico(sostenibilidad)
+```
+
+**Pesos globales**
+
+```{r}
+tabla3 = multicriterio.metodoAHP.pesosglobales_entabla(wcriterios$valoraciones.ahp, 
+                                                       rbind(wpeso$valoraciones.ahp,
+                                                             wcoste$valoraciones.ahp,
+                                                             wfiabilidad$valoraciones.ahp,
+                                                             winnovacion$valoraciones.ahp,
+                                                             wriesgo$valoraciones.ahp,
+                                                             wsostenibilidad$valoraciones.ahp))
+```
+
+```{r,echo=FALSE}
+tabla3 %>%
+  kable(booktabs = TRUE) %>%
+  kable_styling(latex_options = c("striped", "condensed","HOLD_position", "scale_down"), 
+                position = "center",
+                full_width = FALSE)
+
+```
+
+***Conclusión:*** Podemos ver que independientemente del método de
+cálculo de los pesos locales la mejora más óptima para implementar es
+***Optimización de la batería*** con un peso global:
+
+-   Método mayor autovalor: 28,50% aproximadamente
+-   Media geométrica: 28,41%
+-   Método básico: 28,17%
+
+Además se verifica que para todos los criterios la mejora menos óptima
+es la de diseño de nuevas aletas y difusores para ***Aerodinámica.***
+
+## Método II
+
+```{r, echo=FALSE}
+num.alt = 5
+num.crt = 6
+Xarray_nivel2 = array (NA, dim=c(num.alt, num.alt, num.crt))
+Xarray_nivel2[,,1] = peso
+Xarray_nivel2[,,2] = coste
+Xarray_nivel2[,,3] = fiabilidad
+Xarray_nivel2[,,4] = innovacion
+Xarray_nivel2[,,5] = riesgo
+Xarray_nivel2[,,6] = sostenibilidad
+paso1 = multicriterio.metodoAHP.variante3.completo(tablacriterios,Xarray_nivel2)
+sol_m2 <- paso1$pesos.globales_entabla
+```
+
+```{r,echo=FALSE}
+sol_m2 %>%
+  kable(booktabs = TRUE) %>%
+  kable_styling(latex_options = c("striped", "condensed","HOLD_position", "scale_down"), 
+                position = "center",
+                full_width = FALSE)
+
+
+```
+
+## Diagrama Jerarquías
+
+```{r, echo=FALSE, fig.align='center'}
+num.alt = 5
+num.crt = 6
+Xmatriznivel2 = array (NA, dim=c(num.alt, num.alt, num.crt))
+Xmatriznivel2[,,1] = peso
+Xmatriznivel2[,,2] = coste
+Xmatriznivel2[,,3] = fiabilidad
+Xmatriznivel2[,,4] = innovacion
+Xmatriznivel2[,,5] = riesgo
+Xmatriznivel2[,,6] = sostenibilidad
+dimnames(Xmatriznivel2)[[1]] <- alternativas
+multicriterio.metodoahp.diagrama(tablacriterios, Xmatriznivel2)
+```
+
+No se ve de forma muy clara en este diagrama ya que está toda la
+información muy condensada.
+
+## Paquete AHP
+
+```{r,echo=FALSE, warning=FALSE}
+library(ahp)
+datos = Load("datos.ahp")
+Calculate(datos)
+```
+
+```{r,echo=FALSE}
+Visualize(datos)
+```
+
+**Contribución total**
+
+```{r,echo=FALSE}
+export_formattable(AnalyzeTable(datos), file = "tablaAHPp1.png")
+```
+
+**Pesos locales**
+
+```{r, echo=FALSE}
+tabla2 = AnalyzeTable(datos, variable = "priority")
+export_formattable(tabla2, file = "tablaAHP2.png")
+```
+
+**Análisis de las Tablas AHP**
+
+-   Contribución Total de los Criterios La primera tabla muestra la
+    contribución total de cada criterio en la selección de la mejora
+    óptima para los monoplazas. Los criterios más relevantes son:
+
+Coste (42.0%): Es el criterio más importante, con una alta prioridad
+general. En este criterio, la opción de "Batería" lidera, contribuyendo
+con el 53.6% del peso total.
+
+Peso (29.9%): El segundo criterio más importante. Aquí, el "Monocasco"
+se destaca como la mayor contribución, con un peso del 48.9%.
+
+Fiabilidad (12.9%): Es el tercer criterio más relevante, siendo
+"Telemetría" el factor predominante con una contribución del 46.7%.
+
+Riesgos (7.4%): En este criterio, "Telemetría" nuevamente lidera con un
+peso significativo del 49.9%.
+
+Sostenibilidad (4.6%): La "Aerodinámica" tiene una fuerte presencia en
+este criterio, contribuyendo con el 27.6%.
+
+Innovación (3.2%): Aunque menos importante, el "Monocasco" domina este
+criterio, con una contribución del 47.2%.
+
+Los valores de inconsistencia son bajos, entre el 1.3% y 4.9%, lo que
+indica que las evaluaciones han sido consistentes y se ha hecho las
+comparaciones de forma coherentes.
+
+-   Pesos Locales por Criterio En la segunda tabla, se detallan los
+    pesos locales, que reflejan la importancia de cada opción dentro de
+    cada criterio específico. Cabe destacar los siguientes datos. Coste:
+    La opción de "Batería" es la más relevante, con un peso local del
+    22.5%.
+
+Peso: El "Monocasco" tiene la mayor relevancia dentro de este criterio,
+alcanzando el 14.6%.
+
+Fiabilidad: Aquí, "Telemetría" se destaca, con un peso del 6.0%.
+
+Riesgos: "Telemetría" también domina en este criterio, con un peso del
+3.7%.
+
+Sostenibilidad: La "Aerodinámica" lidera este criterio, contribuyendo
+con el 2.2%.
+
+Innovación: El "Monocasco" vuelve a ser clave, representando el 1.5%.
+
+Los índices de inconsistencia en esta tabla son similares, entre 1.3% y
+4.7%, también buenos.
+
+**Conclusión**
+
+Finalmente se puede concluir de froma general las opciones pueden
+ordenarse de más óptima es hacer un estido de la configuración para
+***optimizar la batería***, esta opción lidera en el criterio "Coste"
+como ya hemos comentado antes y la opción más consistente en el resto de
+criterios. Por lo tanto, para las prioridades globales, las mejoras
+deberían enfocarse en Batería y Monocasco, seguidas por Telemetría.
+
+# ELECTRE
+
+| Criterio         | Min/Max | Monocasco | 4WD | Batería | Telemetría | Aerodinámica | Tipo | Parámetros |
+|---------|---------|--------|---------|--------|--------|--------|--------|--------|
+| Peso (kg)        | Min     | 78        | 40  | 4       | 0          | -10          | III  | p=25       |
+| Coste (miles € ) | Min     | 12        | 2   | 3,5     | 0,5        | 5            | V    | q=0,75 p=8 |
+| Fiabilidad       | Max     | 8         | 10  | 5       | 3          | 4            | II   | q=15       |
+| Innovación       | Max     |           |     |         |            |              | VI   | s=6        |
+| Riesgos          | Min     |           |     |         |            |              | IV   | q=5, p=7   |
+| Sostenibilidad   | Max     |           |     |         |            |              | II   | 1=20       |
+
+: Datos
