@@ -4,4 +4,4 @@ Decisión multicriterio: Elección de la mejora más óptima para su implementac
 
 https://laumaydel.github.io/trabajo02indtd2024/ 
 
-- <Informe.html>
+ [informe formato html](Informe.html)
