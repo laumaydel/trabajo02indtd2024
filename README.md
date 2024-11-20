@@ -2,6 +2,4 @@
 Decisión multicriterio: Elección de la mejora más óptima para su implementación en un equipo de Formula Student
 
 
-https://laumaydel.github.io/trabajo02indtd2024/ 
-
- [informe formato html](Informe.html)
+ [informe formato html](https://laumaydel.github.io/trabajo02indtd2024/Informe.html)
