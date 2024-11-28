@@ -590,7 +590,7 @@ electre$Nucleo
 
 ```{r, echo=FALSE}
 pesos.criterios = c(0.44,0.26,0.15,0.08,0.1,0.06)
-tab.fpref = matrix (c(3,0,25,0,
+tab.fpref = matrix (c(3,0,5,0,
                       5,0.75,8,0,
                       2,5,0,0,
                       6,0,0,6,
@@ -611,7 +611,7 @@ tab.fpref %>%
 ## PROMETHEE I
 
 ```{r, echo=FALSE}
-(tab.Pthee.i = multicriterio.metodo.promethee_i(tab_ep,pesos.criterios,tab.fpref))
+tab.Pthee.i = multicriterio.metodo.promethee_i(tab_ep,pesos.criterios,tab.fpref)
 ```
 
 ```{r, fig.align='center', echo=FALSE}
@@ -624,7 +624,7 @@ qgraph(tab.Pthee.i$tablarelacionsupera)
 ## PROMETHEE II
 
 ```{r, echo=FALSE}
-(tab.Pthee.ii = multicriterio.metodo.promethee_ii(tab_ep,pesos.criterios,tab.fpref))
+tab.Pthee.ii = multicriterio.metodo.promethee_ii(tab_ep,pesos.criterios,tab.fpref)
 ```
 
 ```{r, fig.align='center', echo=FALSE}
@@ -636,7 +636,7 @@ qgraph(tab.Pthee.ii$tablarelacionsupera)
 ## PROMETHEE I (medias)
 
 ```{r, echo=FALSE}
-(tab.Pthee.i_med = multicriterio.metodo.promethee_i_med(tab_ep,pesos.criterios,tab.fpref))
+tab.Pthee.i_med = multicriterio.metodo.promethee_i_med(tab_ep,pesos.criterios,tab.fpref)
 ```
 
 ```{r, fig.align='center', echo=FALSE}
@@ -648,7 +648,7 @@ qgraph(tab.Pthee.i_med$tablarelacionsupera)
 ## PROMETHEE II (medias)
 
 ```{r, echo=FALSE}
-(tab.Pthee.ii_med = multicriterio.metodo.promethee_ii_med(tab_ep,pesos.criterios,tab.fpref))
+tab.Pthee.ii_med = multicriterio.metodo.promethee_ii_med(tab_ep,pesos.criterios,tab.fpref)
 ```
 
 ```{r, fig.align='center', echo=FALSE}
