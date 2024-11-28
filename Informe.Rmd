@@ -650,7 +650,7 @@ electre$Nucleo
 **Tabla preferencias**
 
 | Criterio | Min/Max | Monocasco | 4WD | Batería | Telemetría | Aerodinámica | Tipo | Parámetros |
-|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|----|----|----|----|----|----|----|----|----|
 | Peso (kg) | Min | 78 | 40 | 4 | 0 | 40 | III | p=25 |
 | Coste (miles € ) | Min | 12 | 2 | 3,5 | 0,5 | 5 | V | q=0,75 p=8 |
 | Fiabilidad | Max | 1 | 4 | 3 | 5 | 2 | II | q=15 |
