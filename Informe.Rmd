@@ -526,8 +526,7 @@ deberían enfocarse en Batería y Monocasco, seguidas por Telemetría.
 
 # ELECTRE
 
-Dados las siguiente tabla de datos con cada uno de los criterios que
-tienen peso: 43% , 26% , 14%, 8.3%, 4.8%, 3.18% respectivamente
+Dados las siguiente matriz de decisión con seis criterios con pesos: 43% , 26% , 14%, 8.3%, 4.8%, 3.18% respectivamente: 
 
 | Criterio | Min/Max | Monocasco | 4WD | Batería | Telemetría | Aerodinámica | Tipo | Parámetros |
 |--------|--------|--------|--------|--------|--------|--------|--------|--------|
@@ -664,14 +663,19 @@ order(tab.Pthee.ii$vflujos.netos,decreasing = T)
 order(tab.Pthee.ii_med$vflujos.netos,decreasing = T)
 ```
 
-CONCLUSIÓN Y ORDENACIÓN
+Como conclusión podemos ordenar las alternativas en el siguiente orden que nos muestra de más óptima a menos:
+
+      $Telemetría >> Batería >> 4WD >> Aerodinámica >> Monocasco$
+
+Es la misma ordenación independeientemente de si es con medias o sin ellas. 
+Obteniendo de nuevo que la mejora más óptima es que se implemente una telemetría completa en el coche al igual que se concluía haciendo uso del método ELECTRE. 
 
 ## Resolución con Promethee Windows
 
 ```{r, echo=FALSE}
 res = multicriterio.metodo.promethee_windows(tab_ep, tab.fpref, pesos.criterios)
 res = multicriterio.metodo.promethee_windows (tab_ep, tab.fpref, pesos.criterios,
-fminmax = c("max", "min", "max", "min","max", "min","max"))
+fminmax = c("min","min","max","max","min","max"))
 
 res02 = multicriterio.metodo.promethee_windows_kableExtra(res)
 ```
@@ -692,7 +696,12 @@ res02$tabAcciones %>%
 rownames(res$Acciones)
 ```
 
-Con Promethee Windows obtenemos la siguiente
-ordenación..........................
+Con Promethee Windows obtenemos la siguiente ordenación:
+
+  $Telemetría >> Batería >> 4WD >> Aerodinámica >> Monocasco$
+  
 
 # Conclusion
+
+Podemos determinar que en rasgos generales las alternativas más óptimas para su implementación en el equipo aon buscar una nueva configuración para optimizar el rendimiento de la batería y el desarrollo de un sistema d emonotorización a tiempo real o telemetría como hemos estado llamándolo duarante todo el proyecto. 
+
