@@ -534,8 +534,6 @@ export_formattable(tabla2, file = "AHP/tablaAHP2.png")
 
 </center>
 
-\newpage
-
 **Análisis de las Tablas AHP**
 
 -   Contribución Total de los Criterios
@@ -645,6 +643,8 @@ electre$Nucleo
 -   Alternativa 3: $a_3Sa_1$, $a_3Sa_2$ y $a_3Sa_5$
 -   Alternativa 5: $a_5Sa_1$
 
+\newpage
+
 # PROMETHEE
 
 **Tabla preferencias**
@@ -668,11 +668,9 @@ tab.fpref = matrix (c(3,0,5,0,
                       2,2,0,0),ncol=4,byrow=T)
 ```
 
-\newpage
-
 ## PROMETHEE I
 
-```{r, echo=TRUE}
+```{r, echo=TRUE,warning=FALSE}
 tab.Pthee.i = multicriterio.metodo.promethee_i(tab_ep,pesos.criterios,tab.fpref)
 ```
 
@@ -681,11 +679,9 @@ require ("qgraph")
 qgraph(tab.Pthee.i$tablarelacionsupera)
 ```
 
-\newpage
-
 ## PROMETHEE II
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 tab.Pthee.ii = multicriterio.metodo.promethee_ii(tab_ep,pesos.criterios,tab.fpref)
 ```
 
@@ -693,11 +689,9 @@ tab.Pthee.ii = multicriterio.metodo.promethee_ii(tab_ep,pesos.criterios,tab.fpre
 qgraph(tab.Pthee.ii$tablarelacionsupera)
 ```
 
-\newpage
-
 ## PROMETHEE I (medias)
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 tab.Pthee.i_med = multicriterio.metodo.promethee_i_med(tab_ep,pesos.criterios,tab.fpref)
 ```
 
@@ -705,11 +699,9 @@ tab.Pthee.i_med = multicriterio.metodo.promethee_i_med(tab_ep,pesos.criterios,ta
 qgraph(tab.Pthee.i_med$tablarelacionsupera)
 ```
 
-\newpage
-
 ## PROMETHEE II (medias)
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 tab.Pthee.ii_med = multicriterio.metodo.promethee_ii_med(tab_ep,pesos.criterios,tab.fpref)
 ```
 
@@ -717,11 +709,9 @@ tab.Pthee.ii_med = multicriterio.metodo.promethee_ii_med(tab_ep,pesos.criterios,
 qgraph(tab.Pthee.ii_med$tablarelacionsupera)
 ```
 
-\newpage
-
 ### Comparativa Promethee II: sin medias y con medias
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 order(tab.Pthee.ii$vflujos.netos,decreasing = T)
 order(tab.Pthee.ii_med$vflujos.netos,decreasing = T)
 ```
