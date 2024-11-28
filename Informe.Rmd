@@ -123,7 +123,11 @@ hemos mencionado anteriormente. Veamos estas de forma detallada.
 Durante la temporada 24 y anteriormente en el equipo siempre se ha
 realizado un meneplazas cuyo chasis era tubular.
 
+<center>
+
 ![ART-24 D Chasis Tubular](Fotos/chasistubular.png){width="400"}
+
+</center>
 
 Consiste en una red de tubos de acero o aluminio soldados entre sí.
 
@@ -134,7 +138,11 @@ significativamente el peso del vehículo, sino que también incrementamos
 la rigidez estructural, lo cual mejora el comportamiento dinámico del
 mismo.
 
+<center>
+
 ![ART-25 D Monocasco](Fotos/monocasco.png){width="400"}
+
+</center>
 
 **2. Tracción a las 4 rueda**
 
@@ -144,7 +152,11 @@ aceleración, el control y la estabilidad en curvas al distribuir la
 potencia en las cuatro ruedas, optimizando el agarre en cualquier
 condición de pista.
 
+<center>
+
 ![Estructura de un 4WD](Fotos/4WD.png){width="400"}
+
+</center>
 
 **3. Optimización de la batería**
 
@@ -153,7 +165,11 @@ se pueden ver en la derecha, estas ocupan mucho menos sitio haciendo que
 el computo general de la batería tenga un peso menor al de la temporada
 de 2024. Además de un cambio en la configuración de la misma.
 
+<center>
+
 ![Celdas batería](Fotos/bateria.png){width="400"}
+
+</center>
 
 **4. Telemetría**
 
@@ -448,6 +464,8 @@ sol_m2 %>%
 
 ## Diagrama Jerarquías
 
+<center>
+
 ```{r, echo=FALSE, fig.align='center'}
 num.alt = 5
 num.crt = 6
@@ -461,6 +479,8 @@ Xmatriznivel2[,,6] = sostenibilidad
 dimnames(Xmatriznivel2)[[1]] = alternativas
 multicriterio.metodoahp.diagrama(tablacriterios, Xmatriznivel2)
 ```
+
+</center>
 
 No se ve de forma muy clara en este diagrama ya que está toda la
 información muy condensada.Pero puede leerse bajo cada una de las
@@ -483,15 +503,21 @@ datos = Load("AHP/datos.ahp")
 Calculate(datos)
 ```
 
+<center>
+
 ```{r,echo=FALSE}
 Visualize(datos)
 ```
+
+</center>
 
 Para la resolución con este método hace falta tener los datos en un
 fichero con extensión ***.ahp*** que puede encontrarse en el repositorio
 de [GitHub](https://github.com/laumaydel/trabajo02indtd2024).
 
 Este paquete calcula y genera las siguientes salidas en forma de tablas:
+
+<center>
 
 **Contribución total**
 
@@ -505,6 +531,8 @@ export_formattable(AnalyzeTable(datos), file = "AHP/tablaAHPp1.png")
 tabla2 = AnalyzeTable(datos, variable = "priority")
 export_formattable(tabla2, file = "AHP/tablaAHP2.png")
 ```
+
+</center>
 
 \newpage
 
