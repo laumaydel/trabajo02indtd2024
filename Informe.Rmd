@@ -83,6 +83,8 @@ vehículo ni los estándares de seguridad, todo debe cumplir las reglas
 que la competición de Alemania (FSG) determina. [*(enlace a la
 normativa)*](https://www.formulastudent.de/fileadmin/user_upload/all/2025/rules/FS-Rules_2025_v1.0.pdf)*.*
 
+\newpage
+
 **4. Innovación**
 
 Este criterio considera el grado de creatividad y originalidad de la
@@ -132,15 +134,15 @@ significativamente el peso del vehículo, sino que también incrementamos
 la rigidez estructural, lo cual mejora el comportamiento dinámico del
 mismo.
 
-![ART-25 D Monocasco](Fotos/monocasco.png){width="400"} \newpage
+![ART-25 D Monocasco](Fotos/monocasco.png){width="400"}
 
 **2. Tracción a las 4 rueda**
 
-Conocido y llamado a partir de ahora como 4WD(4 Wheel Drive). Consiste
-en lugar de tener un único motor, colocar uno en cada rueda. Este cambio
-mejorará la aceleración, el control y la estabilidad en curvas al
-distribuir la potencia en las cuatro ruedas, optimizando el agarre en
-cualquier condición de pista.
+Conocido en adelante como 4WD(Four Wheel Drive). Consiste en lugar de
+tener un único motor, colocar uno en cada rueda. Este cambio mejorará la
+aceleración, el control y la estabilidad en curvas al distribuir la
+potencia en las cuatro ruedas, optimizando el agarre en cualquier
+condición de pista.
 
 ![Estructura de un 4WD](Fotos/4WD.png){width="400"}
 
@@ -173,10 +175,13 @@ fuerzas aerodinámicas, aumentando la eficiencia y el rendimiento.
 En primer lugar vamos a hacer una matriz que contenga la información al
 comparar los distintos ***criterios***:
 
-```{r,echo=FALSE,warning=FALSE}
+```{r,echo=TRUE,warning=FALSE}
 criterios= c ("Peso","Coste","Fiabilidad","Innovación","Riesgo","Sostenibilidad")
 tablacriterios= multicriterio.crea.matrizvaloraciones_mej(
   c(1/2,2,7,4,6,4,9,6,7,5,2,4,1/4,1/2,2), numalternativas = 6, v.nombres.alternativas = criterios)
+```
+
+```{r,echo=FALSE,warning=FALSE}
 tablacriterios %>%
   kable(booktabs = TRUE,digits = 2) %>%
   kable_styling(latex_options = c("striped", "condensed","HOLD_position", "scale_down"), 
@@ -185,9 +190,12 @@ tablacriterios %>%
 ```
 
 Ahora se hará una matriz para cada uno de los criterios haciendo
-comparaciones dos a dos sobre las distintas alternativas yy ver cual es
-preferible a cual, buscando simepre una estructura coherente y
-respetando la relación de coherencia.
+comparaciones dos a dos sobre las distintas alternativas y ver cual es
+preferible a cual, buscando siempre respetar la relación de coherencia.
+
+*(Nota: Se ocultará el código en la creación del resto de matrices para
+no sobrecargar la presentación del documento. Se hace de la misma forma
+para las distintas alternativas obteniendo las siguientes matrices.)*
 
 ```{r,echo=FALSE}
 alternativas= c("Monocasco","4WD","Batería","Telemetría","Aerodinámica")
@@ -271,6 +279,8 @@ sostenibilidad %>%
                 full_width = FALSE)
 ```
 
+\newpage
+
 ## Método I: Funciones de clase
 
 ### Mayor autovalor
@@ -282,7 +292,7 @@ wcriterios = multicriterio.metodoAHP.variante1.autovectormayorautovalor(tablacri
 
 ```
 
-*nota: De forma análoga para todos los criterios*
+*Nota: De forma análoga para todos los criterios*
 
 ```{r,echo=FALSE}
 wcriterios = multicriterio.metodoAHP.variante1.autovectormayorautovalor(tablacriterios)
@@ -325,7 +335,7 @@ wcriterios = multicriterio.metodoAHP.variante2.mediageometrica(tablacriterios)
 
 ```
 
-*nota: De forma análoga para todos los criterios*
+*Nota: De forma análoga para todos los criterios*
 
 ```{r,echo=FALSE}
 wpeso = multicriterio.metodoAHP.variante2.mediageometrica(peso)
@@ -400,14 +410,15 @@ tabla3 %>%
 
 ***Conclusión:*** Podemos ver que independientemente del método de
 cálculo de los pesos locales la mejora más óptima para implementar es
-***Optimización de la batería*** con un peso global:
+***Optimización de la batería*** con un peso global aproximadamente de:
 
--   Método mayor autovalor: 28,503% aproximadamente
+-   Método mayor autovalor: 28,503%
 -   Media geométrica: 28,193%
 -   Método básico: 28,065%
 
 Además se verifica que para todos los criterios la mejora menos óptima
-es la de diseño de nuevas aletas y difusores para ***Aerodinámica.***
+es la de diseño de nuevas aletas y difusores para la ***Aerodinámica***
+del monoplaza.
 
 ## Método II
 
@@ -452,9 +463,19 @@ multicriterio.metodoahp.diagrama(tablacriterios, Xmatriznivel2)
 ```
 
 No se ve de forma muy clara en este diagrama ya que está toda la
-información muy condensada.
+información muy condensada.Pero puede leerse bajo cada una de las
+alternativas el peso global que tiene cada una en la decisión final y
+podemos ver que la mejora más óptima para ser implementada según este
+método es mejorar la configuración de la ***Batería***.
+
+\newpage
 
 ## Paquete AHP
+
+Podemos ver un primer gráfico con forma de árbol que muestra el objetivo
+que se persigue en este trabajo, los distintos criterios que se tienen
+en cuenta para tomar esta elección y las distintas alternativas que
+pueden llevarse a cabo:
 
 ```{r,echo=FALSE, warning=FALSE}
 library(ahp)
@@ -465,6 +486,12 @@ Calculate(datos)
 ```{r,echo=FALSE}
 Visualize(datos)
 ```
+
+Para la resolución con este método hace falta tener los datos en un
+fichero con extensión ***.ahp*** que puede encontrarse en el repositorio
+de [GitHub](https://github.com/laumaydel/trabajo02indtd2024).
+
+Este paquete calcula y genera las siguientes salidas en forma de tablas:
 
 **Contribución total**
 
@@ -479,6 +506,8 @@ tabla2 = AnalyzeTable(datos, variable = "priority")
 export_formattable(tabla2, file = "AHP/tablaAHP2.png")
 ```
 
+\newpage
+
 **Análisis de las Tablas AHP**
 
 -   Contribución Total de los Criterios
@@ -490,7 +519,8 @@ peso es:
 Coste (43.1%): Es el criterio más importante, con una alta prioridad en
 general. En este criterio, la opción de "Batería" lidera, contribuyendo
 con el 50.5% de peso para que esta alternativa se posicione como la más
-óptima.
+óptima.Lo que refleja la relevancia de este aspecto en un contexto
+universitario con recursos limitados.
 
 De forma similar puede verse esto para el resto de criterios hasta
 llegar al criterio con menor peso que es la innovación con tan solo un
@@ -500,42 +530,46 @@ Los valores de inconsistencia son bajos, entre el 1.3% y 2.3%, lo que
 indica que las evaluaciones y comparaciones dentro de cada criterio se
 hecho de manera coherente.
 
--   Pesos Locales por Criterio En la segunda tabla, se detallan los
-    pesos locales, que reflejan la importancia de cada opción dentro de
-    cada criterio específico. Cabe destacar los siguientes datos. Dentro
-    del criterio Coste: La opción de "Batería" es la más relevante, con
-    un peso local del 28.5%.
+-   Pesos Locales por Criterio
+
+En la segunda tabla, se detallan los pesos locales, que reflejan la
+importancia de cada opción dentro de cada criterio específico. Cabe
+destacar de forma similar a la anterior interpretación, en el criterio
+Coste: La opción de "Batería" es la más relevante, con un peso local del
+50.5%.
 
 Fijándonos en el peso vemos que la implementación de un Monocasco es la
 alternativa preferible para minimizar este mismo criterio, cosa que es
 evidente ya que supondría una gran mejora pues como se ha comentado
 anteriormente un monocasco de fibra de carbono supondría una gran
 diferencia de peso frente al chasis tabular de acero de la temoporada
-pasada, colocandose así con un peso del 12.0% en este criterio.
+pasada, colocandose así con un peso del 46.1% en este criterio.
 
 **Conclusión**
 
-Finalmente se puede concluir de forma general las opciones pueden
-ordenarse de más óptima es hacer un estido de la configuración para
-***optimizar la batería***, esta opción lidera en el criterio "Coste"
-como ya hemos comentado antes y la opción más consistente en el resto de
-criterios. Por lo tanto, para las prioridades globales, las mejoras
-deberían enfocarse en Batería y Monocasco, seguidas por Telemetría.
+Finalmente se puede concluir de forma general qeu aplicando cualqueira
+de los distintos métodos disponibles de AHP la alternativa de
+***optimizar la batería***, esta opción lidera y debería implementars
+como ya hemos comentado antes además de ser la opción más consistente en
+el resto de criterios. Por lo tanto, para las prioridades globales, las
+mejoras deberían enfocarse en Batería y Monocasco, seguidas por
+Telemetría.
 
 \newpage
 
 # ELECTRE
 
-Dados las siguiente matriz de decisión con seis criterios con pesos: 43% , 26% , 14%, 8.3%, 4.8%, 3.18% respectivamente: 
+Dados las siguiente matriz de decisión con seis criterios con pesos: 43%
+, 26% , 14%, 8.3%, 4.8%, 3.18% respectivamente:
 
-| Criterio | Min/Max | Monocasco | 4WD | Batería | Telemetría | Aerodinámica | Tipo | Parámetros |
-|--------|--------|--------|--------|--------|--------|--------|--------|--------|
-| Peso (kg) | Min | 78 | 40 | 4 | 0 | 40 | III | p=25 |
-| Coste (miles € ) | Min | 12 | 2 | 3,5 | 0,5 | 5 | V | q=0,75 p=8 |
-| Fiabilidad | Max | 1 | 4 | 3 | 5 | 2 | II | q=15 |
-| Innovación | Max | 5 | 3 | 3 | 4 | 2 | VI | s=6 |
-| Riesgos | Min | 2 | 3 | 4 | 5 | 1 | IV | q=5, p=7 |
-| Sostenibilidad | Max | 2 | 3 | 1 | 5 | 4 | II | p=20 |
+| Criterio         | Min/Max | Monocasco | 4WD | Batería | Telemetría | Aerodinámica |
+|------------------|---------|-----------|-----|---------|------------|--------------|
+| Peso (kg)        | Min     | 78        | 40  | 4       | 0          | 40           |
+| Coste (miles € ) | Min     | 12        | 2   | 3,5     | 0,5        | 5            |
+| Fiabilidad       | Max     | 1         | 4   | 3       | 5          | 2            |
+| Innovación       | Max     | 5         | 3   | 3       | 4          | 2            |
+| Riesgos          | Min     | 2         | 3   | 4       | 5          | 1            |
+| Sostenibilidad   | Max     | 2         | 3   | 1       | 5          | 4            |
 
 : Datos
 
@@ -587,6 +621,15 @@ electre$Nucleo
 
 **Tabla preferencias**
 
+| Criterio | Min/Max | Monocasco | 4WD | Batería | Telemetría | Aerodinámica | Tipo | Parámetros |
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+| Peso (kg) | Min | 78 | 40 | 4 | 0 | 40 | III | p=25 |
+| Coste (miles € ) | Min | 12 | 2 | 3,5 | 0,5 | 5 | V | q=0,75 p=8 |
+| Fiabilidad | Max | 1 | 4 | 3 | 5 | 2 | II | q=15 |
+| Innovación | Max | 5 | 3 | 3 | 4 | 2 | VI | s=6 |
+| Riesgos | Min | 2 | 3 | 4 | 5 | 1 | IV | q=5, p=7 |
+| Sostenibilidad | Max | 2 | 3 | 1 | 5 | 4 | II | p=20 |
+
 ```{r, echo=FALSE}
 pesos.criterios = c(0.44,0.26,0.15,0.08,0.1,0.06)
 tab.fpref = matrix (c(3,0,5,0,
@@ -597,19 +640,11 @@ tab.fpref = matrix (c(3,0,5,0,
                       2,2,0,0),ncol=4,byrow=T)
 ```
 
-```{r, echo=FALSE}
-tab.fpref %>%
-  kable(booktabs = TRUE) %>%
-  kable_styling(latex_options = c("striped", "condensed","HOLD_position"), 
-                position = "center",
-                full_width = FALSE)
-```
-
 \newpage
 
 ## PROMETHEE I
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 tab.Pthee.i = multicriterio.metodo.promethee_i(tab_ep,pesos.criterios,tab.fpref)
 ```
 
@@ -663,16 +698,21 @@ order(tab.Pthee.ii$vflujos.netos,decreasing = T)
 order(tab.Pthee.ii_med$vflujos.netos,decreasing = T)
 ```
 
-Como conclusión podemos ordenar las alternativas en el siguiente orden que nos muestra de más óptima a menos:
+Como conclusión podemos ordenar las alternativas en el siguiente orden
+que nos muestra de más óptima a menos:
 
-      $Telemetría >> Batería >> 4WD >> Aerodinámica >> Monocasco$
+```         
+  $Telemetría >> Batería >> 4WD >> Aerodinámica >> Monocasco$
+```
 
-Es la misma ordenación independeientemente de si es con medias o sin ellas. 
-Obteniendo de nuevo que la mejora más óptima es que se implemente una telemetría completa en el coche al igual que se concluía haciendo uso del método ELECTRE. 
+Es la misma ordenación independeientemente de si es con medias o sin
+ellas. Obteniendo de nuevo que la mejora más óptima es que se implemente
+una telemetría completa en el coche al igual que se concluía haciendo
+uso del método ELECTRE.
 
 ## Resolución con Promethee Windows
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 res = multicriterio.metodo.promethee_windows(tab_ep, tab.fpref, pesos.criterios)
 res = multicriterio.metodo.promethee_windows (tab_ep, tab.fpref, pesos.criterios,
 fminmax = c("min","min","max","max","min","max"))
@@ -698,10 +738,15 @@ rownames(res$Acciones)
 
 Con Promethee Windows obtenemos la siguiente ordenación:
 
-  $Telemetría >> Batería >> 4WD >> Aerodinámica >> Monocasco$
-  
+$Telemetría >> Batería >> 4WD >> Aerodinámica >> Monocasco$
 
 # Conclusion
 
-Podemos determinar que en rasgos generales las alternativas más óptimas para su implementación en el equipo aon buscar una nueva configuración para optimizar el rendimiento de la batería y el desarrollo de un sistema d emonotorización a tiempo real o telemetría como hemos estado llamándolo duarante todo el proyecto. 
-
+Podemos determinar que en rasgos generales las alternativas más óptimas
+para su implementación en el equipo son buscar una nueva configuración
+para optimizar el rendimiento de la **batería** y el desarrollo de un
+sistema de monotorización a tiempo real o **telemetría** como hemos
+estado llamándolo duarante todo el proyecto. El hecho de que tanto
+PROMETHEE como ELECTRE coincidan en priorizar la Telemetría refuerza la
+robustez de esta conclusión, indicando que es una opción sólida
+independientemente de las variaciones en los parámetros de evaluación.
