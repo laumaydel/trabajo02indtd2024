@@ -5,7 +5,7 @@ Laura Mayorgas del Castillo
 
 ## Descripción: 
 En este trabajo se pretende asentar los conocimientos de clase mediante la resolución de un problema inventado haciendo uso de las distintos criterios de **toma de decisión multicriterio** vistos en clase haciendo uso de tres métodos: AHP (Proceso Analítico Jerarárquico), ELECTRE y PROMETHEE. 
-Además puede verse el trabajo tanto en formato PDF como en [formato html](https://laumaydel.github.io/trabajo02indtd2024/Informe.html). 
+Además puede verse el trabajo tanto en formato PDF como en formato html, gracias a este segundo se ha creado la siguiente [página web](https://laumaydel.github.io/trabajo02indtd2024/Informe.html). 
 
 ## Contenido: 
 - **.gitignore:** Archivo que contienen patrones que establecen coincidencias con los nombres de archivo del repositorio para determinar si deberían ignorarse o no.
